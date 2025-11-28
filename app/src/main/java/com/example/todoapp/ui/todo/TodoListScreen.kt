@@ -10,7 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -102,7 +102,10 @@ private fun ListBody(
             verticalArrangement = Arrangement.Center,
             modifier = modifier.fillMaxSize()
         ) {
-            Text(text = "No todos", style = MaterialTheme.typography.titleLarge)
+            Text(
+                text = stringResource(R.string.no_todos),
+                style = MaterialTheme.typography.titleLarge
+            )
         }
     } else {
         TodoList(
@@ -135,7 +138,7 @@ private fun TodoItem(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             if (todo.isDone) {
-                Icon(imageVector = Icons.Filled.CheckCircle, contentDescription = "")
+                Icon(imageVector = Icons.Default.Check, contentDescription = "")
             }
 
             Text(
@@ -147,7 +150,10 @@ private fun TodoItem(
             )
 
             IconButton(onClick = onDelete) {
-                Icon(imageVector = Icons.Filled.Delete, contentDescription = "")
+                Icon(
+                    imageVector = Icons.Filled.Delete,
+                    contentDescription = stringResource(R.string.delete_todo)
+                )
             }
         }
     }

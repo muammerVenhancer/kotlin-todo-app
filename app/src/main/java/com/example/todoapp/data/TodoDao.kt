@@ -19,6 +19,6 @@ interface TodoDao {
     @Delete
     suspend fun delete(todo: Todo)
 
-    @Query("SELECT * FROM todo ORDER BY id DESC")
+    @Query("SELECT * FROM todo ORDER BY createdAt DESC")
     fun getAll(): Flow<List<Todo>>
 }

@@ -11,29 +11,21 @@ class TodoEntryViewModel(private val todoRepository: TodoRepository) : ViewModel
     var todoUiState by mutableStateOf(TodoUiState())
         private set
 
-    private fun validateInput(uiState: TodoUiState): Boolean {
-        return with(uiState) {
-            title.isNotBlank()
-        }
+    fun updateUiState(newTodoUiState: TodoUiState) {
+        todoUiState = newTodoUiState
     }
 
-    fun updateUiState(newTodoUiState: TodoUiState) {
-        if (validateInput(newTodoUiState)) {
-            todoUiState = newTodoUiState.copy(isDone = todoUiState.isDone)
-        }
-    }
+    fun isValidInput(): Boolean = todoUiState.title.isNotBlank()
 
     suspend fun saveTodo() {
-        if (validateInput(todoUiState)) {
+        if (isValidInput()) {
             todoRepository.insertTodo(todoUiState.toTodo())
         }
     }
-
 }
 
 data class TodoUiState(
     val title: String = "",
-    val description: String = "",
     val isDone: Boolean = false
 )
 

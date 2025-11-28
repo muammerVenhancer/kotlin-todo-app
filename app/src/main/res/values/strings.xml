@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Todo App</string>
+    <string name="add_new_todo">Add new todo</string>
+    <string name="navigate_back">Navigate back</string>
+    <string name="completed">Completed</string>
+    <string name="delete_todo">Delete todo</string>
+    <string name="no_todos">No todos</string>
+    <string name="title">Title</string>
+    <string name="save">Save</string>
 </resources>
